@@ -1,8 +1,12 @@
 import React, {useState, useEffect} from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import Button from '../Components/Button'
+import { PageWrapper } from '../Style/HomeStyle'
 
 export default function Home() {
+
+  const navigate = useNavigate()
 
     const [userData, setUserData] = useState({loading: true})
     const [service, setService] = useState(["CUci Baju", "Cuci "])
@@ -71,8 +75,19 @@ export default function Home() {
 
     const food = ["Ayam", "ikan", "telur", "risol"]
 
+    // const newUserData = JSON.parse(localStorage.getItem("userData")) 
+    
+    
+
   return (
-    <div>
+    <PageWrapper>
+      {/* Logout */}
+      <button onClick={()=> { 
+        localStorage.removeItem("loginData")
+        navigate("/login")
+      }} >Logout</button>
+
+        {/* Name:{newUserData.username} */}
         <h1>Home</h1>
         {/* {
           data.loading && 
@@ -117,6 +132,6 @@ export default function Home() {
           <Button title={"Submit"} cStyle={{color:"red"}}  />
         </form>
         <Link to={"/about"} >about</Link>
-    </div>
+    </PageWrapper>
   )
 }
