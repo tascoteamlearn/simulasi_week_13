@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Navigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {
@@ -13,6 +13,7 @@ import Home from './Layouts/Home';
 import Login from './Layouts/Login'
 
 import './App.css';
+import Week15 from './Layouts/Week15';
 
 function Redirect() {
 
@@ -37,6 +38,16 @@ function Redirect() {
   )
 }
 
+// const Redirector = ({children}) =>{
+//   const accessToken = localStorage.getItem("access_token")
+//   console.log("see here thousand times", accessToken)
+//   if (!accessToken) {
+//     return <Navigate to={"/login"} exact replace={true} />
+//   } else {
+//     return children
+//   }
+// }
+
 function App() {
 
   const [userData, setUserData] = useState({})
@@ -46,11 +57,20 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <div>
+        {/* <div>
           <h3>Username:{userData.username || "Belum Login"}</h3>
           <h3>Password:{userData.password || "Belum Login"}</h3>
-        </div>
-        <Redirect/>
+        </div> */}
+        <Routes>
+          <Route path='/home' exact element={<Home/>} />
+          <Route path='/about' exact element={<About/>} />
+          <Route path='/login' exact element={<Login />} />
+          <Route path='/week15' exact element={<Week15 />} />
+        </Routes>
+        {/* <Redirector path='/' exact element={<Home/>} />
+        <Redirector path='/about' exact element={<About/>} />
+        <Redirector path='/login' exact element={<Login />} /> */}
+        {/* <Redirect/> */}
       </Router>
     </div>
   );

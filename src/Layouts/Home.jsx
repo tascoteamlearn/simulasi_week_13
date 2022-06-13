@@ -22,10 +22,6 @@ export default function Home() {
     //     // if (!userData.loading) setUserData({...userData, name:"Niswati", age:25})
     // },[userData])
 
-    useEffect(()=>{
-      console.log("hello")
-    })
-
 
     let data = {
       nama:"",
@@ -77,6 +73,11 @@ export default function Home() {
 
     // const newUserData = JSON.parse(localStorage.getItem("userData")) 
     
+    // useEffect(()=>{
+    //   let loginData = localStorage.getItem("loginData")
+    //   loginData = JSON.parse(loginData)
+    //   console.log(typeof loginData)
+    // },[])
     
 
   return (
